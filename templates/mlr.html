@@ -6,6 +6,19 @@
         <h2 class="card-title text-center mb-4">
             <i class="fas fa-chart-bar me-2"></i>Multiple Linear Regression Prediction
         </h2>
+        
+        {% if not models_loaded %}
+        <div class="alert alert-warning text-center mb-4">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Models not loaded!</strong> The prediction model could not be loaded. Please try again later.
+        </div>
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">
+                <i class="fas fa-home me-2"></i>Return to Home
+            </a>
+        </div>
+        
+        {% else %}
         <div class="model-info mb-4">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -84,8 +97,15 @@
                     </div>
                 </div>
                 {% endif %}
+                
+                {% if error %}
+                <div class="alert alert-danger mt-4">
+                    <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+                </div>
+                {% endif %}
             </div>
         </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %} 

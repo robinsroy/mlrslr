@@ -10,6 +10,13 @@
             This application uses machine learning to predict CO₂ emissions for vehicles based on their specifications.
         </p>
         
+        {% if not models_loaded %}
+        <div class="alert alert-warning text-center mb-4">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Models not loaded!</strong> The prediction models have not been trained or could not be loaded.
+        </div>
+        {% endif %}
+        
         <div class="row">
             <div class="col-md-6 mb-4">
                 <div class="card h-100">
