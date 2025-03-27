@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center mb-4">
+            <i class="fas fa-leaf me-2"></i>Welcome to CO₂ Emission Predictor
+        </h1>
+        <p class="card-text text-center mb-4">
+            This application uses machine learning to predict CO₂ emissions for vehicles based on their specifications.
+        </p>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-chart-line me-2"></i>Simple Linear Regression
+                        </h5>
+                        <div class="model-info">
+                            <h6 class="mb-3">Model Features:</h6>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-cog"></i>Engine Size</li>
+                            </ul>
+                            <div class="accuracy-badge">
+                                <i class="fas fa-check-circle me-1"></i>Accuracy: {{ "%.2f"|format(slr_r2 * 100) }}%
+                            </div>
+                        </div>
+                        <p class="card-text">Predict CO₂ emissions using only the engine size as a feature.</p>
+                        <a href="/slr" class="btn btn-primary">
+                            <i class="fas fa-arrow-right me-1"></i>Try SLR Model
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-chart-bar me-2"></i>Multiple Linear Regression
+                        </h5>
+                        <div class="model-info">
+                            <h6 class="mb-3">Model Features:</h6>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-cog"></i>Engine Size</li>
+                                <li><i class="fas fa-tools"></i>Number of Cylinders</li>
+                                <li><i class="fas fa-gas-pump"></i>Fuel Type</li>
+                            </ul>
+                            <div class="accuracy-badge">
+                                <i class="fas fa-check-circle me-1"></i>Accuracy: {{ "%.2f"|format(mlr_r2 * 100) }}%
+                            </div>
+                        </div>
+                        <p class="card-text">Predict CO₂ emissions using multiple vehicle specifications.</p>
+                        <a href="/mlr" class="btn btn-primary">
+                            <i class="fas fa-arrow-right me-1"></i>Try MLR Model
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
